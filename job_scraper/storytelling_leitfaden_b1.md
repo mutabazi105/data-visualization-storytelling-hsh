@@ -406,12 +406,34 @@ Nutze diese Vorlage:
 
 ### 0. CONTEXT
 ```
-[ ] Personal: Ich frage mich: Ist die Hannover Messe gut für Studenten, die einen Job suchen?
+[ ] Personal: wir fragen uns: Ist die Hannover Messe gut für Studenten, die einen Job suchen?
+Die Hannover Messe ist gut für die Kontakt knüpfen
+-> Welche Leute haben welche Unternehmen gesehen?
+
 [ ] Stakeholder: Mein Professor fragt: Welche Unternehmen sprechen mit Studenten?
-[ ] Audience: Jobsuchende brauchen Wissen über echte Job-Chancen auf Messen.
-[ ] Anticipated: Ich denke, es ist relevant zu wissen, dass große Firmen keine Studenten suchen.
-[ ] Potential: Ich habe entdeckt: Die Hannover Messe ist keine Job-Messe für Studenten.
+welche Skills sind am meinstens gefragt - gut
+(bar oder scatter, skills_clean)
+
+[ ] Audience: 
+sollten wir solche Veranstalltung in zünkuft wieder besuchen. Wer war zufrieden?
+(Sat_messe)
+
+[ ] Anticipated: Ich denke, es ist relevant zu wissen, dass große Firmen keine Studenten suchen. Welche?
+(Companies)
+
+
+
+
+
+
+
+[ ] Potential: Ich habe entdeckt: Die Hannover Messe ist keine Job-Messe für Studenten. 
+warum haben Menschien teilnehmende wenig oder kein nutzen auf der Messe
+es Ist gut für neue Technologie entiwickeln 
+
+Wie sehe ich in die Daten, das unternehmen nicht jobsuchende suchen? (companies seen, skills seen)
 ```
+
 
 
 ### 1. PERCEIVING
