@@ -35,6 +35,10 @@ Meine Frage ist: ________________________________________________
 Ich frage mich, in welchen Regionen (Bundesländer-Städte) es wieviele Stellen zu welcher IT-Berufsgruppe gibt
 
 
+Meine Frage ist: Sind große IT-Messen wie die Hannover Messe eigentlich gut geeignet, 
+um als Student einen Job zu finden, oder geht es den Unternehmen dort mehr um 
+Business-Kontakte als um Personalgewinnung?
+
 
 
 ```
@@ -402,36 +406,47 @@ Nutze diese Vorlage:
 
 ### 0. CONTEXT
 ```
-[ ] Personal: ___________________________________________________
-[ ] Stakeholder: ________________________________________________
-[ ] Audience: ___________________________________________________
-[ ] Anticipated: ________________________________________________
-[ ] Potential: __________________________________________________
+[ ] Personal: Ich frage mich: Ist die Hannover Messe gut für Studenten, die einen Job suchen?
+[ ] Stakeholder: Mein Professor fragt: Welche Unternehmen sprechen mit Studenten?
+[ ] Audience: Jobsuchende brauchen Wissen über echte Job-Chancen auf Messen.
+[ ] Anticipated: Ich denke, es ist relevant zu wissen, dass große Firmen keine Studenten suchen.
+[ ] Potential: Ich habe entdeckt: Die Hannover Messe ist keine Job-Messe für Studenten.
 ```
+
 
 ### 1. PERCEIVING
 ```
-Zeigt: __________________________________________________________
-Groß/Klein: _____________________________________________________
-Vergleiche: _____________________________________________________
-Beziehungen: ____________________________________________________
+Zeigt: Meine Erfahrung auf der Hannover Messe am Freitag mit 4 Unternehmen.
+
+Groß/Klein: 4 Unternehmen besucht (mittel), 5 Gespräche (mittel), 4 LinkedIn-Kontakte (gut), 0 Jobangebote (klein).
+
+Vergleiche: Mehr Erfolg bei LinkedIn-Kontakten (4) als bei Jobangeboten (0). Unternehmen fokussierten auf Business (100%), nicht auf Jobs (0%).
+
+Beziehungen: Je größer das Unternehmen, desto weniger Interesse an Studenten-Jobs.
 ```
+
 
 ### 2. INTERPRETING
 ```
-Bedeutet: _______________________________________________________
-Gut/Schlecht: ___________________________________________________
-Bedeutungsvoll/Unwichtig: _______________________________________
-Ungewöhnlich/Erwartet: __________________________________________
+Bedeutet: Die Hannover Messe ist eine Business-Messe, keine Job-Messe für Studenten.
+
+Gut/Schlecht: Schlecht für Jobsuche, gut für Business-Kontakte.
+
+Bedeutungsvoll/Unwichtig: Sehr bedeutungsvoll für meine zukünftige Messewahl.
+
+Ungewöhnlich/Erwartet: Unerwartet - große Firmen wie Amazon und Microsoft suchten keine Studenten.
 ```
+
 
 ### 3. COMPREHENDING
-```
-Hauptbotschaft: _________________________________________________
-Gelernt: ________________________________________________________
-Aktion: _________________________________________________________
-```
 
+```
+Hauptbotschaft: Spezielle Job-Messen sind besser für Studenten als die Hannover Messe.
+
+Gelernt: Große Messen sind für Business, nicht für Jobsuche.
+
+Aktion: Ich gehe zu Job-Messen, bewerbe mich online und pflege meine 4 neuen LinkedIn-Kontakte.
+```
 ---
 
 **Fertig! Das ist deine vollständige Story. 🎉**
