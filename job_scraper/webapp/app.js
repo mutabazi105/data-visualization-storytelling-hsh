@@ -930,7 +930,8 @@ async function toggleCityJobs(event, city, bundesland = '', containerId, jobType
         let html = '<div class="jobs-list">';
         jobs.forEach(job => {
             html += `<div class="job-item">`;
-            html += `<a href="${job.url}" target="_blank" rel="noopener noreferrer" class="job-link">📄 ${job.title}</a>`;
+            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(job.title)}`;
+            html += `<a href="${googleSearchUrl}" target="_blank" rel="noopener noreferrer" class="job-link">📄 ${job.title}</a>`;
             html += `<div class="job-meta">`;
             html += `🏢 ${job.company || 'Unbekannt'}`;
             if (job.city) html += ` | 📍 ${job.city}`;
@@ -983,7 +984,8 @@ async function toggleCompanyJobs(event, company, jobType, containerId) {
         let html = '<div class="jobs-list">';
         jobs.forEach(job => {
             html += `<div class="job-item">`;
-            html += `<a href="${job.url}" target="_blank" rel="noopener noreferrer" class="job-link">📄 ${job.title}</a>`;
+            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(job.title)}`;
+            html += `<a href="${googleSearchUrl}" target="_blank" rel="noopener noreferrer" class="job-link">📄 ${job.title}</a>`;
             html += `<div class="job-meta">`;
             if (job.city) html += `📍 ${job.city} | `;
             html += `💼 ${job.job_type}`;
@@ -1031,7 +1033,8 @@ async function toggleChartJobs(event, category, jobType, containerId) {
         
         jobs.forEach(job => {
             html += `<div class="job-item">`;
-            html += `<a href="${job.url}" target="_blank" rel="noopener noreferrer" class="job-link">📄 ${job.title}</a>`;
+            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(job.title)}`;
+            html += `<a href="${googleSearchUrl}" target="_blank" rel="noopener noreferrer" class="job-link">📄 ${job.title}</a>`;
             html += `<div class="job-meta">`;
             html += `🏢 ${job.company || 'Unbekannt'}`;
             if (job.city) html += ` | 📍 ${job.city}`;

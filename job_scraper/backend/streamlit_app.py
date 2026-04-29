@@ -125,7 +125,7 @@ class StreamlitJobApp:
         return fig
     
     def plot_plotly_bar_chart(self, df, job_type):
-        """Create interactive bar chart using plotly"""
+        """Create interactive bar chart using plotly with enhanced interactivity"""
         df_filtered = df[df['job_type'] == job_type].groupby('category')['count'].mean().reset_index()
         df_filtered = df_filtered.sort_values('count', ascending=False)
         
@@ -136,7 +136,7 @@ class StreamlitJobApp:
         data_display['Durchschnittliche Anzahl'] = data_display['Durchschnittliche Anzahl'].round(1)
         st.dataframe(data_display, use_container_width=True)
         
-        # Create chart
+        # Create interactive chart with enhanced features
         fig = px.bar(
             df_filtered,
             x='category',
@@ -145,14 +145,37 @@ class StreamlitJobApp:
             labels={'category': 'Berufsfeld', 'count': 'Durchschnittliche Anzahl'},
             color='count',
             color_continuous_scale='Viridis',
-            text='count'
+            text='count',
+            hover_data={'count': ':.1f'}
         )
         
-        fig.update_traces(texttemplate='%{text:.0f}', textposition='outside')
+        # Enhanced styling and interactivity
+        fig.update_traces(
+            texttemplate='%{text:.0f}',
+            textposition='outside',
+            hovertemplate='<b>%{x}</b><br>Anzahl: %{y:.1f}<extra></extra>'
+        )
+        
         fig.update_layout(
             xaxis_tickangle=-45,
             height=500,
-            showlegend=False
+            showlegend=False,
+            hovermode='closest',
+            plot_bgcolor='rgba(0,0,0,0)',
+            xaxis=dict(
+                showgrid=False,
+                title_font=dict(size=14, family='Arial, sans-serif', color='#333'),
+            ),
+            yaxis=dict(
+                showgrid=True,
+                gridcolor='rgba(128,128,128,0.2)',
+                title_font=dict(size=14, family='Arial, sans-serif', color='#333'),
+            ),
+            title=dict(
+                font=dict(size=16, family='Arial, sans-serif', color='#333'),
+                x=0.5,
+                xanchor='center'
+            )
         )
         
         return fig
@@ -473,177 +496,3 @@ if __name__ == "__main__":
     main()
 
 # Made with Bob
-
-    
-    def render_heatmap(self):
-        """Render Germany heatmap with job locations"""
-        st.subheader("🗺️ Stellenangebote in Deutschland - Heatmap")
-        
-        locations = self.scraper.load_locations_data()
-        
-        if not locations:
-            st.info("Keine Standortdaten vorhanden. Führen Sie ein detailliertes Scraping durch.")
-            if st.button("🔍 Detailliertes Scraping starten"):
-                with st.spinner("Detailliertes Scraping läuft... Dies kann länger dauern."):
-                    jobs = self.scraper.scrape_all_detailed(st.session_state.job_categories, max_per_category=50)
-                    self.scraper.save_detailed_data(jobs)
-                    st.success(f"✅ {len(jobs)} detaillierte Jobs gescraped!")
-                    st.rerun()
-            return
-        
-        # Create map centered on Germany
-        m = folium.Map(
-            location=[51.1657, 10.4515],  # Center of Germany
-            zoom_start=6,
-            tiles='OpenStreetMap'
-        )
-        
-        # Filter options
-        col1, col2 = st.columns(2)
-        with col1:
-            selected_job_types = st.multiselect(
-                "Angebotsart filtern",
-                options=list(JOB_TYPES.keys()),
-                default=list(JOB_TYPES.keys())
-            )
-        with col2:
-            selected_categories = st.multiselect(
-                "Berufsfelder filtern",
-                options=list(set([loc['category'] for loc in locations])),
-                default=list(set([loc['category'] for loc in locations]))
-            )
-        
-        # Filter locations
-        filtered_locations = [
-            loc for loc in locations
-            if loc['job_type'] in selected_job_types and loc['category'] in selected_categories
-        ]
-        
-        # Add markers
-        for loc in filtered_locations:
-            folium.CircleMarker(
-                location=[loc['lat'], loc['lon']],
-                radius=5,
-                popup=f"<b>{loc['company']}</b><br>{loc['city']}<br>{loc['category']}",
-                color='red',
-                fill=True,
-                fillColor='red',
-                fillOpacity=0.6
-            ).add_to(m)
-        
-        # Display map
-        st_folium(m, width=1200, height=600)
-        
-        # Statistics
-        st.markdown("### 📊 Standort-Statistiken")
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            st.metric("Standorte gesamt", len(filtered_locations))
-        with col2:
-            unique_cities = len(set([loc['city'] for loc in filtered_locations]))
-            st.metric("Städte", unique_cities)
-        with col3:
-            unique_companies = len(set([loc['company'] for loc in filtered_locations]))
-            st.metric("Unternehmen", unique_companies)
-    
-    def render_companies_analysis(self):
-        """Render companies/keywords analysis with CRUD"""
-        st.subheader("🏢 Unternehmen-Analyse")
-        
-        companies_data = self.scraper.load_companies_data()
-        
-        if not companies_data:
-            st.info("Keine Unternehmensdaten vorhanden. Führen Sie ein detailliertes Scraping durch.")
-            if st.button("🔍 Detailliertes Scraping starten", key="companies_scrape"):
-                with st.spinner("Detailliertes Scraping läuft..."):
-                    jobs = self.scraper.scrape_all_detailed(st.session_state.job_categories, max_per_category=50)
-                    self.scraper.save_detailed_data(jobs)
-                    st.success(f"✅ {len(jobs)} detaillierte Jobs gescraped!")
-                    st.rerun()
-            return
-        
-        # Select job type
-        selected_job_type = st.selectbox(
-            "Angebotsart auswählen",
-            options=list(companies_data.keys())
-        )
-        
-        if selected_job_type not in companies_data:
-            st.warning("Keine Daten für diese Angebotsart")
-            return
-        
-        companies = companies_data[selected_job_type]
-        
-        # Display options
-        col1, col2 = st.columns([3, 1])
-        with col1:
-            show_count = st.slider("Anzahl anzeigen", 5, 50, 20)
-        with col2:
-            sort_order = st.radio("Sortierung", ["Absteigend", "Aufsteigend"])
-        
-        # Sort companies
-        if sort_order == "Aufsteigend":
-            companies = sorted(companies, key=lambda x: x['count'])
-        else:
-            companies = sorted(companies, key=lambda x: x['count'], reverse=True)
-        
-        # Display top companies
-        st.markdown(f"### Top {show_count} Unternehmen - {selected_job_type}")
-        
-        # Create DataFrame
-        df_companies = pd.DataFrame(companies[:show_count])
-        
-        # Add visibility column if not exists
-        if 'visible' not in df_companies.columns:
-            df_companies['visible'] = True
-        
-        # Display table with checkboxes
-        for idx, row in df_companies.iterrows():
-            col1, col2, col3 = st.columns([3, 1, 1])
-            
-            with col1:
-                st.write(f"**{row['name']}**")
-            with col2:
-                st.write(f"{row['count']} Stellen")
-            with col3:
-                visible = st.checkbox(
-                    "Anzeigen",
-                    value=row.get('visible', True),
-                    key=f"vis_{selected_job_type}_{idx}"
-                )
-                if visible != row.get('visible', True):
-                    self.scraper.update_company_visibility(
-                        selected_job_type,
-                        row['name'],
-                        visible
-                    )
-        
-        # Bar chart
-        st.markdown("### 📊 Visualisierung")
-        visible_companies = df_companies[df_companies.get('visible', True) == True]
-        
-        if not visible_companies.empty:
-            fig = px.bar(
-                visible_companies,
-                x='name',
-                y='count',
-                title=f'Top Unternehmen - {selected_job_type}',
-                labels={'name': 'Unternehmen', 'count': 'Anzahl Stellenangebote'},
-                color='count',
-                color_continuous_scale='Viridis'
-            )
-            fig.update_layout(xaxis_tickangle=-45, height=500)
-            st.plotly_chart(fig, use_container_width=True)
-        else:
-            st.info("Keine sichtbaren Unternehmen ausgewählt")
-        
-        # Export functionality
-        if st.button("📥 Unternehmensdaten exportieren"):
-            csv = df_companies.to_csv(index=False).encode('utf-8')
-            st.download_button(
-                label="CSV herunterladen",
-                data=csv,
-                file_name=f"companies_{selected_job_type}_{datetime.now().strftime('%Y%m%d')}.csv",
-                mime="text/csv"
-            )

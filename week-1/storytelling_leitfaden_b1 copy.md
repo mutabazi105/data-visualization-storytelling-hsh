@@ -1,6 +1,7 @@
 # 📖 Wie erzähle ich eine Data Story? (B1-Deutsch)
 
-![alt text](FormulatingBriefs.png)
+BIS 10:40 
+![alt text](../FormulatingBriefs.png)
 
 ## 🎯 Zwei wichtige Frameworks
 

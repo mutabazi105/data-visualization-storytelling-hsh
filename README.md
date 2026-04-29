@@ -1,271 +1,268 @@
-# Data Visualization & Storytelling
-## Hochschule Hannover (HsH) - Course Materials
+# Projekt: Data Visualization & Storytelling 📊
 
-**Version:** 1.0  
-**Created:** April 2026  
-**Status:** Ready for use
+Willkommen zu unserem 2-Wochen-Kurs! Hier lernen wir, wie man mit Daten Geschichten erzählt.
 
----
+## 🎯 Unsere Ziele
+1. **Daten verstehen**: Wir arbeiten mit echten Daten (z. B. Wetter in Hannover).
+2. **Visualisierung**: Wir erstellen klare Diagramme mit `Matplotlib` und `Pandas`.
+3. **Storytelling**: Wir finden eine Antwort auf eine spannende Frage.
 
-## 📚 Welcome
+## 📂 Struktur
+- `/data`: Unsere Datensätze (.csv und .json).
+- `/woche-1`: Hier findet ihr den Code aus den Kursstunden.
+- `/woche-2`: Hier findet ihr den Code aus den Kursstunden.
 
-Welcome to the "Data Visualization & Storytelling" course at Hochschule Hannover. This repository contains all materials for a comprehensive 9-block course focused on Python visualization tools.
+- `/optional`: Fortgeschrittene Inhalte für später.
 
----
+## 🛠 Was wir bisher gemacht haben
 
-## 🎯 Quick Start
+### 📚 Woche 1: Matplotlib Grundlagen
 
-### For Students
-1. Read [COURSE_STRUCTURE.md](COURSE_STRUCTURE.md) for course overview
-2. Check [COURSE_OVERVIEW.md](COURSE_OVERVIEW.md) for visual representation
-3. Review [BLOCKS_SUMMARY.md](BLOCKS_SUMMARY.md) for all 9 blocks
-4. Start with the notebooks in the `notebooks/` folder
-5. Follow along with weekly materials in the `weeks/` folder
+#### 01 - Figure & Axes Konzept
+**Was ist das?** Die **Figure-Instanz** ist wie eine leere Leinwand in Matplotlib. Darauf zeichnen wir unsere Diagramme.
 
-### For Instructors
-📖 **Detailed instructor materials available in [`optional/README.md`](optional/README.md)**
+**Zwei Wege zum Plotten:**
+- **pyplot** (`plt.plot()`) - Schnell und einfach, wie MATLAB
+- **OO-Interface** (`fig, ax = plt.subplots()`) - Mehr Kontrolle
 
-This includes:
-- Detailed course planning (PLAN.md)
-- Modularity and time format options (MODULARITAET.md)
-- Tool comparison guide (TOOL_VERGLEICH.md)
-- Assessment framework (BEWERTUNG.md)
-- Block 1 complete template (Block_1_Einfuehrung_Grundlagen.md)
-- Implementation summary (IMPLEMENTATION_SUMMARY.md)
+**Referenz:** Dies ist der erste Block aus dem Haupt-Notebook im `fundamentals/` Ordner (zum selber Editieren!).
 
 ---
 
-## 📁 Main Documents
+#### 02 - Pyplot API (MATLAB-Style)
+**Was ist das?** Die **pyplot API** ist das einfache Interface - `plt` managed automatisch Figure und Axes für uns!
 
-| Document | Description |
-|----------|-------------|
-| **[COURSE_STRUCTURE.md](COURSE_STRUCTURE.md)** | Complete course description |
-| **[COURSE_OVERVIEW.md](COURSE_OVERVIEW.md)** | Visual overview with diagrams |
-| **[BLOCKS_SUMMARY.md](BLOCKS_SUMMARY.md)** | Summary of all 9 blocks |
-| **[README.md](README.md)** | This document - entry point |
+**Wichtig:** Die `.plot()` Methode funktioniert auch direkt auf **Pandas DataFrames**!
 
----
+**Beispiel:**
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
 
-## 📊 The 9 Blocks
-
-| # | Title | Difficulty | Main Topics |
-|---|-------|------------|-------------|
-| 1 | Introduction & Fundamentals | ⭐☆☆☆☆ | Setup, Basics, first plots |
-| 2 | Data Representations & Seaborn I | ⭐⭐☆☆☆ | Matplotlib, Seaborn, Scales |
-| 3 | Focus I - Specialized Visualizations | ⭐⭐⭐☆☆ | Advanced techniques, Tufte |
-| 4 | Plotly I & Bokeh | ⭐⭐☆☆☆ | Interactivity, HTML export |
-| 5 | Accessibility I | ⭐⭐⭐☆☆ | WCAG, Color blindness |
-| 6 | Storytelling I | ⭐⭐☆☆☆ | Narrative, Communication |
-| 7 | Research I | ⭐⭐⭐⭐☆ | ML metrics, EDA |
-| 8 | Dashboard I | ⭐⭐⭐☆☆ | Streamlit, Dashboard design |
-| 9 | Advanced Tools II | ⭐⭐⭐⭐☆ | Power BI, Dash, Mastery |
-
-Detailed descriptions: [BLOCKS_SUMMARY.md](BLOCKS_SUMMARY.md)
-
----
-
-## 🛠️ Technical Requirements
-
-### Python Installation
-
-```bash
-# Anaconda (recommended)
-conda create -n dataviz python=3.10
-conda activate dataviz
-
-# Core libraries (required)
-pip install matplotlib seaborn plotly pandas numpy jupyter
-
-# Advanced tools (optional)
-pip install bokeh streamlit dash pandas-profiling
+df = pd.read_csv('data/hannover_temp.csv')
+plt.plot(df['datum'], df['temperatur'])  # Direkt aus DataFrame!
+plt.show()
 ```
 
-### Alternative: Google Colab
-- Free: https://colab.research.google.com
-- No installation needed
-- All libraries pre-installed
+---
 
-### Hardware
-- **Laptop:** Windows, macOS or Linux
-- **RAM:** Minimum 8 GB (16 GB recommended)
-- **Internet:** Stable connection
+#### 03 - Working with actual data! 📊
+**Ab hier arbeiten wir mit echten Daten aus CSV-Dateien!**
+
+**Gruppenarbeit (Tag 3):**
+- 📋 **Anleitung:** [`woche-1/Part1/03_anleitung.md`](woche-1/Part1/03_anleitung.md) - Schritt-für-Schritt Guide
+- 🎯 **Fragen:** [`woche-1/03_fragen.md`](woche-1/03_fragen.md) - 5 Gruppen, 5 verschiedene Fragen
+- 📊 **Datensätze:** Temperatur, Auto-Preise, Herzerkrankungen, etc.
+
+**Verbindung:** Die Gruppenarbeit nutzt die Befehle aus Tag 1-2 und wendet sie auf echte Daten an!
 
 ---
 
-## 📚 Resources
+### 📊 Woche 2: Storytelling & Datensammlung
 
-### Recommended Books
-- **Edward Tufte:** "The Visual Display of Quantitative Information"
-- **Cole Nussbaumer Knaflic:** "Storytelling with Data"
-- **Alberto Cairo:** "The Truthful Art"
+#### Präsentationen mit dem Storytelling-Framework
+**Jede Woche hat eine Präsentation!**
 
-### Online Resources
-- [Matplotlib Documentation](https://matplotlib.org/)
-- [Seaborn Gallery](https://seaborn.pydata.org/examples/)
-- [Plotly Documentation](https://plotly.com/python/)
-- [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-- [Kaggle Datasets](https://www.kaggle.com/datasets)
+- 📄 **Workflow-PDF:** [`woche-1/06-workflow.pdf`](woche-1/06-workflow.pdf) - Visueller Workflow
+- 📖 **Storytelling-Leitfaden (Dozent-Beispiel):** [`job_scraper/storytelling_leitfaden_b1.md`](job_scraper/storytelling_leitfaden_b1.md) - Ausgefüllt vom Dozenten als Beispiel
+- ✍️ **Storytelling-Vorlage (für Teilnehmer):** [`week-1/storytelling_leitfaden_b1 copy.md`](week-1/storytelling_leitfaden_b1%20copy.md) - Zum Ausfüllen
 
-### Course Notebooks
-Available in the `notebooks/` folder:
-- `tufte_principles_improved.ipynb` (Blocks 3, 5)
-- `intensity_chart_accurate.ipynb` (Blocks 2, 3)
-- `matplotlib_vs_seaborn.ipynb` (Block 2)
-- `color_accessibility_guide.ipynb` (Block 5)
-
-### Course Materials (NEW!)
-Available in the `weeks/` and `fundamentals/` folders:
-
-**Week Materials:**
-- `weeks/week-1/storytelling_leitfaden_b1.md` - Storytelling guide (B1 German level)
-- `weeks/week-2/exercises/gruppenaufgaben_diagramme.md` - Group exercises for data storytelling
-
-**Fundamentals:**
-- `fundamentals/matplotlib_parameter_reference.md` - Complete parameter reference for Matplotlib
-
-**Note:** Course is organized by weeks, with each week covering specific blocks
+**Framework:** Context (Intrigue) → Perceiving → Interpreting → Comprehending
 
 ---
 
-## 🚀 Getting Started
+#### Datensammlung: Von manuell bis automatisch
+**Drei Wege, Daten zu sammeln:**
 
-### For Students
+1. **Manuell (JSON):** Wie eine Einkaufsliste - einfach und schnell!
+2. **Microsoft Forms:** Strukturierte Umfragen mit automatischem CSV-Export
+3. **Python-Backend:** Job-Scraper-Anwendung (ähnliche Installation wie unser Kurs!)
 
-1. **Week before course:**
-   - [ ] Install Python (Anaconda)
-   - [ ] Install libraries
-   - [ ] Test Jupyter Notebook
-   - [ ] Create Kaggle account
-   - [ ] Read COURSE_STRUCTURE.md
-   - [ ] Review `storytelling_leitfaden_b1.md` for storytelling basics
+## 📖 Leitfaden: Was ist ein guter Plot?
 
-2. **During the course:**
-   - [ ] Attend all sessions
-   - [ ] Practice regularly (30-60 min daily)
-   - [ ] Complete assignments on time
-   - [ ] Use office hours
-   - [ ] Form peer learning groups
-   - [ ] Use `matplotlib_parameter_reference.md` as quick reference
+Bevor du dein Diagramm fertigstellst, prüfe diese Punkte:
+
+1. **Titel**: Versteht man sofort, worum es geht?
+2. **Achsen**: Sind `xlabel` und `ylabel` beschriftet?
+3. **Legende**: Wenn es mehrere Linien gibt, weiß man, welche welche ist?
+4. **Farben**: Sind die Farben hilfreich oder verwirrend?
+5. **Story**: Welche Frage beantwortet dieser Plot? (z. B. "Ist es in Hannover wärmer als in Berlin?")
+
+📄 **Vollständige Checkliste**: Siehe [`woche-1/04_checkliste.md`](woche-1/04_checkliste.md)
+
+## 📚 Unsere Notebooks
+
+### Woche 1: Grundlagen
+1. **[Main_Kopie_von_Intro_to_matplotlib.ipynb](woche-1/Main_Kopie_von_Intro_to_matplotlib.ipynb)** - Erste Schritte mit Matplotlib
+
+### Fortgeschritten:
+- **[advanced-content/week-1/](advanced-content/week-1/)** - Erweiterte Notebooks
+- **[advanced-content/week-2/](advanced-content/week-2/)** - Weitere Notebooks
+
+## 📊 Unsere Datensätze
+
+Im `data/` Ordner findest du:
+- `hannover_temp.csv` - Temperaturdaten aus Hannover
+- `car-sales.csv` - Autoverkaufsdaten
+- `heart-disease.csv` - Gesundheitsdaten
+- `student_performance.csv` - Studentenleistungen
+- `online_retail_sample.csv` - Online-Shop Verkäufe
+
+## 🎓 Storytelling Framework
+
+Wir nutzen das **Context + Perceiving → Interpreting → Comprehending** Framework.
+
+📄 **Vollständiger Leitfaden**: Siehe [`woche-2/05_story_framework.md`](woche-2/05_story_framework.md)
+
+### Die 3 Schritte:
+
+1. **PERCEIVING** (Was zeigt es?)
+   - Wo ist groß, mittel, klein?
+   - Wie vergleichen sich die Dinge?
+   - Welche Beziehungen existieren?
+
+2. **INTERPRETING** (Was bedeutet es?)
+   - Was ist gut und was ist schlecht?
+   - Ist es bedeutungsvoll oder unwichtig?
+   - Ist es ungewöhnlich oder erwartet?
+
+3. **COMPREHENDING** (Was bedeutet es für mich?)
+   - Was sind die Hauptbotschaften?
+   - Was habe ich gelernt?
+   - Welche Aktionen kann ich machen?
+
+## 🚀 Schnellstart
+
+### Installation
+
+#### Option 1: Mit pip (Standard)
+
+```bash
+# Python-Bibliotheken installieren
+pip install pandas matplotlib jupyter
+
+# Jupyter Notebook starten
+jupyter notebook
+```
+
+#### Option 2: Mit uv (Schneller! ⚡)
+
+`uv` ist ein **sehr schneller** Python Package Manager (10-100x schneller als pip!).
+
+**Installation von uv:**
+```bash
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Windows
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+**Dann Bibliotheken installieren:**
+```bash
+# Mit uv installieren (viel schneller!)
+uv pip install pandas matplotlib jupyter
+
+# Jupyter Notebook starten
+jupyter notebook
+```
+
+**Warum uv?**
+- ⚡ 10-100x schneller als pip
+- 📦 Gleiche Befehle wie pip (`uv pip install ...`)
+- ✅ Funktioniert genauso wie pip
+
+📄 **Vollständige Installations-Anleitung:** Siehe [`job_scraper/INSTALLATION.md`](job_scraper/INSTALLATION.md)
+
+**Tipp:** In Woche 2 zeigen wir eine **Job-Scraping-Anwendung** mit Python-Backend. Die Installation ist ähnlich! (Siehe `job_scraper/`)
+
+### Dein erstes Diagramm
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Daten laden
+df = pd.read_csv('data/hannover_temp.csv')
+
+# Plot erstellen
+plt.plot(df['datum'], df['temperatur'], color='teal')
+plt.title('Temperatur in Hannover')
+plt.xlabel('Datum')
+plt.ylabel('Temperatur (°C)')
+plt.grid(True)
+plt.show()
+```
+
+## 📝 Schritt-für-Schritt zum perfekten Plot
+
+| Element | Was muss ich tun? | Matplotlib-Code (Beispiel) |
+| :--- | :--- | :--- |
+| **Daten** | X- und Y-Werte definieren | `plt.plot(x, y)` |
+| **Farbe** | Eine klare Farbe wählen | `color='teal'` oder `'red'` |
+| **Titel** | Eine Überschrift hinzufügen | `plt.title("Temperatur in Hannover")` |
+| **Achsen** | Namen für X und Y geben | `plt.xlabel("Monat")`, `plt.ylabel("Grad Celsius")` |
+| **Styling** | Gitter oder Linientyp | `plt.grid(True)`, `linestyle='--'` |
+
+## 💡 Tipps für die "Story"-Stunde
+
+Um eine gute Story zu erzählen, stelle dir diese **3 Fragen**:
+
+1. **Beobachtung**: "Was ist das Extremste in deinen Daten?" (Höchste Temperatur, tiefster Punkt)
+2. **Vergleich**: "Was ist der Unterschied zwischen A und B?"
+3. **Warum?**: "Was glaubst du, warum sehen die Daten so aus?"
+
+## 🔧 Manuelle Datensammlung (JSON)
+
+JSON sieht aus wie eine Einkaufsliste:
+
+```json
+{
+  "tag": "Montag",
+  "stimmung": 8,
+  "kaffee_getrunken": 3
+}
+```
+
+Das ist einfacher als komplexe Tabellen!
+
+## 📚 Für Fortgeschrittene
+
+Wenn du mehr lernen möchtest, schau in den **`advanced-content/`** Ordner:
+
+- **[advanced-content/week-1/](advanced-content/week-1/)** - Erweiterte Woche 1 Materialien
+- **[advanced-content/week-2/](advanced-content/week-2/)** - Erweiterte Woche 2 Materialien
+- **[advanced-content/fundamentals/](advanced-content/fundamentals/)** - Tiefere Grundlagen
+- **[optional/advanced-uni-level/](optional/advanced-uni-level/)** - Universitätsniveau
+- **[PROJEKT_BESCHREIBUNG.md](PROJEKT_BESCHREIBUNG.md)** - Vollständige Kursbeschreibung (für Dozenten)
+
+## 📞 Hilfe & Unterstützung
+
+- **Fragen?** Nutze die Office Hours
+- **Probleme?** Schau in die Materialien: [`woche-1/`](woche-1/) und [`woche-2/`](woche-2/)
+- **Mehr lernen?** Erkunde [`advanced-content/`](advanced-content/)
+
+## 🎯 Deine Aufgabe
+
+1. Öffne `woche-1/Main_Kopie_von_Intro_to_matplotlib.ipynb`
+2. Wähle einen Datensatz aus `data/`
+3. Erstelle eine Visualisierung
+4. Beantworte die Story-Fragen (Perceiving → Interpreting → Comprehending)
+5. Präsentiere deine Story!
+
+## ✅ Checkliste für dein Projekt
+
+- [ ] Datensatz ausgewählt
+- [ ] Intrigue definiert (Warum erzähle ich das?)
+- [ ] Plot erstellt mit Titel und Achsenbeschriftungen
+- [ ] PERCEIVING: Was zeigt der Plot?
+- [ ] INTERPRETING: Was bedeutet es?
+- [ ] COMPREHENDING: Was habe ich gelernt?
+- [ ] Story ist vollständig!
 
 ---
 
-## 🎯 Learning Objectives
+**Viel Erfolg mit dem Kurs!** 🎓📊✨
 
-After successful completion, students can:
-
-### Technical
-1. ✓ Create professional visualizations with Python
-2. ✓ Develop interactive dashboards
-3. ✓ Integrate various data sources
-4. ✓ Use BI tools fundamentally
-
-### Design
-5. ✓ Apply Tufte principles
-6. ✓ Create accessible visualizations
-7. ✓ Consider color blindness
-8. ✓ Choose appropriate visualization types
-
-### Conceptual
-9. ✓ Tell data-driven stories
-10. ✓ Communicate for target audiences
-11. ✓ Critically evaluate visualizations
-12. ✓ Understand ethical aspects
-
----
-
-## 💡 Special Features
-
-### Modularity
-- ✅ Adaptable to different time formats
-- ✅ Various learning paths possible
-- ✅ Flexible block order
-
-### Practice-Oriented
-- ✅ Real datasets (Kaggle)
-- ✅ Industry-relevant tools
-- ✅ Project-based learning
-- ✅ Portfolio building
-
-### Accessibility
-- ✅ WCAG 2.1 standards integrated
-- ✅ Inclusive design principles
-- ✅ Practical checklists
-- ✅ Awareness from the start
-
-### Storytelling
-- ✅ Narrative structures
-- ✅ Audience analysis
-- ✅ Presentation techniques
-- ✅ Communication skills
-
----
-
-## 📞 Support & Communication
-
-### For Students
-- **Office Hours:** By appointment
-- **Online Forum:** Moodle/Discord/Slack
-- **Peer Learning:** Form study groups
-- **Technical Support:** IT Helpdesk
-
----
-
-## 🤝 Contributing
-
-This course material is freely available for educational purposes.
-
-### Feedback
-- Suggestions welcome
-- Issues on GitHub
-- Pull requests desired
-- Share experiences
-
-### License
-- **Documentation:** CC BY-SA 4.0
-- **Code Examples:** MIT License
-- **Datasets:** See respective license
-
----
-
-## 📧 Contact
-
-**Hochschule Hannover**  
-**Faculty:** [Insert faculty]  
-**Instructor:** [Insert name]  
-**Email:** [email@hsh.de]
-
-**Course Website:** [Insert URL]  
-**Moodle:** [Insert course link]  
-**GitHub:** [Insert repository link]
-
----
-
-## 🌟 Acknowledgments
-
-This course material was developed based on:
-- Edward Tufte's principles of data visualization
-- Cole Nussbaumer Knaflic's storytelling approach
-- WCAG 2.1 Accessibility Guidelines
-- Best practices from industry and research
-
-Special thanks to:
-- The Python community (Matplotlib, Seaborn, Plotly)
-- Kaggle for datasets
-- All students for feedback
-
----
-
-**Version:** 1.1
-**Last Updated:** April 23, 2026
-**Status:** Ready for implementation
-
-### Recent Updates (v1.1)
-- ✅ Added group exercises for data storytelling (`gruppenaufgaben_diagramme.md`)
-- ✅ Added storytelling guide for B1 German learners (`storytelling_leitfaden_b1.md`)
-- ✅ Added comprehensive Matplotlib parameter reference (`matplotlib_parameter_reference.md`)
-- ✅ Integrated Perceiving → Interpreting → Comprehending framework
-- ✅ Added Context + Intrigue framework for storytelling
-
----
-
-*Good luck with the "Data Visualization & Storytelling" course!* 🎓📊✨
+*Sprachniveau: B1 (Deutsch)*  
+*Letzte Aktualisierung: April 2026*
