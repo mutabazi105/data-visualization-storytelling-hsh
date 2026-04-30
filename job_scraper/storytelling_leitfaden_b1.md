@@ -407,6 +407,9 @@ Nutze diese Vorlage:
 ### 0. CONTEXT
 ```
 [ ] Personal: wir fragen uns: Ist die Hannover Messe gut für Studenten, die einen Job suchen?
+
+
+
 Die Hannover Messe ist gut für die Kontakt knüpfen
 -> Welche Leute haben welche Unternehmen gesehen?
 
@@ -419,7 +422,6 @@ sollten wir solche Veranstalltung in zünkuft wieder besuchen. Wer war zufrieden
 (Sat_messe)
 
 [ ] Anticipated: Ich denke, es ist relevant zu wissen, dass große Firmen keine Studenten suchen. Welche?
-(Companies)
 
 
 
